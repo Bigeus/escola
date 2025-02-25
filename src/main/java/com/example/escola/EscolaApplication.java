@@ -1,0 +1,33 @@
+package com.example.escola;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.example.escola.models.Curso;
+import com.example.escola.repositories.CursoRepository;
+
+@SpringBootApplication
+public class EscolaApplication {
+
+	@Bean
+	public CommandLineRunner init(@Autowired CursoRepository cursoRepository) {
+		return args -> {
+			cursoRepository.inserir(
+					new Curso(null, "teste", 2000));
+			cursoRepository.inserir(
+					new Curso(null, "teste2", 2050));
+			List<Curso> listaCursos = cursoRepository.obterTodos();
+			listaCursos.forEach(System.out::println);
+		};
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(EscolaApplication.class, args);
+	}
+
+}
