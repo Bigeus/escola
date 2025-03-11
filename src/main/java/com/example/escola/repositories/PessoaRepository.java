@@ -5,22 +5,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.escola.models.Curso;
+import com.example.escola.models.Pessoa;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 
 @Repository
-public class CursoRepository {
+public class PessoaRepository {
     @Autowired
     private EntityManager entityManager;
 
     @Transactional
-    public Curso salvar(Curso curso) {
-        return entityManager.merge(curso);
+    public Pessoa salvar(Pessoa pessoa){
+        return entityManager.merge(pessoa);
     }
 
-    public List<Curso> obterTodos(){
-        return entityManager.createQuery("from Curso", Curso.class).getResultList();
+    public List<Pessoa> obterTodos(){
+        return entityManager.createQuery("from Pessoa", Pessoa.class).getResultList();
     }
 }

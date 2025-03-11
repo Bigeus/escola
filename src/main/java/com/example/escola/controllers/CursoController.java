@@ -27,7 +27,7 @@ public class CursoController {
     
     @PostMapping()
     public Curso postCurso(@RequestBody Curso curso) {
-        return cursoRepository.inserir(curso);
+        return cursoRepository.salvar(curso);
     }
     
 }

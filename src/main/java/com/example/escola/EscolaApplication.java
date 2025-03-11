@@ -8,21 +8,44 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.escola.models.CategoriaCurso;
 import com.example.escola.models.Curso;
+import com.example.escola.models.Pessoa;
+import com.example.escola.repositories.CategoriaCursoRepository;
 import com.example.escola.repositories.CursoRepository;
+import com.example.escola.repositories.PessoaRepository;
 
 @SpringBootApplication
 public class EscolaApplication {
 
 	@Bean
-	public CommandLineRunner init(@Autowired CursoRepository cursoRepository) {
+	public CommandLineRunner init(
+		@Autowired CursoRepository cursoRepository,
+		@Autowired CategoriaCursoRepository categoriaRepository,
+		@Autowired PessoaRepository pessoaRepository
+		) {
 		return args -> {
-			cursoRepository.inserir(
+			cursoRepository.salvar(
 					new Curso(null, "teste", 2000));
-			cursoRepository.inserir(
+			cursoRepository.salvar(
 					new Curso(null, "teste2", 2050));
 			List<Curso> listaCursos = cursoRepository.obterTodos();
 			listaCursos.forEach(System.out::println);
+
+			System.out.println("*** Inserir Categoria ***");
+			CategoriaCurso categ = categoriaRepository.salvar(new CategoriaCurso(null, "Informática"));
+			
+			System.out.println("*** Vincular Categoria ao curso ***");
+			Curso curso = cursoRepository.obterTodos().get(0);
+			curso.setCategoriaCurso(categ);
+			cursoRepository.salvar(curso);
+
+			System.out.println("*** Vincular Pessoa ao Curso");
+			Pessoa pessoa1 = pessoaRepository.salvar(new Pessoa(null, "Bigeus"));
+			Pessoa pessoa2 = pessoaRepository.salvar(new Pessoa(null, "Bigeus222"));
+			curso.matricular(pessoa1);
+			curso.matricular(pessoa2);
+			cursoRepository.salvar(curso); //enviar pro banco
 		};
 	}
 
