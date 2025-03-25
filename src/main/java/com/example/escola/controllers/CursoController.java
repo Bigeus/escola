@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping("/cursos")
 public class CursoController {
-    @Autowired
+    /* @Autowired
     private CursoRepository cursoRepository;
 
     @GetMapping()
@@ -28,6 +28,6 @@ public class CursoController {
     @PostMapping()
     public Curso postCurso(@RequestBody Curso curso) {
         return cursoRepository.salvar(curso);
-    }
+    } */
     
 }

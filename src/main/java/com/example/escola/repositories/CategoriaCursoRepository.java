@@ -1,26 +1,9 @@
 package com.example.escola.repositories;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.escola.models.CategoriaCurso;
 
-import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
-
-@Repository
-public class CategoriaCursoRepository {
-    @Autowired
-    EntityManager entityManager;
-
-    @Transactional
-    public CategoriaCurso salvar(CategoriaCurso categoriaCurso) {
-        return entityManager.merge(categoriaCurso);
-    }
-
-    public List<CategoriaCurso> obterTodos() {
-        return entityManager.createQuery("FROM CategoriaCurso", CategoriaCurso.class).getResultList();
-    }
+public interface CategoriaCursoRepository extends JpaRepository<CategoriaCurso, Integer> {
+    
 }

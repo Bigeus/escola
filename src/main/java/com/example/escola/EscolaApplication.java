@@ -25,27 +25,31 @@ public class EscolaApplication {
 		@Autowired PessoaRepository pessoaRepository
 		) {
 		return args -> {
-			cursoRepository.salvar(
+			cursoRepository.save(
 					new Curso(null, "teste", 2000));
-			cursoRepository.salvar(
+			cursoRepository.save(
 					new Curso(null, "teste2", 2050));
-			List<Curso> listaCursos = cursoRepository.obterTodos();
+			List<Curso> listaCursos = cursoRepository.findAll();
 			listaCursos.forEach(System.out::println);
 
 			System.out.println("*** Inserir Categoria ***");
-			CategoriaCurso categ = categoriaRepository.salvar(new CategoriaCurso(null, "Informática"));
+			CategoriaCurso categ = categoriaRepository.save(new CategoriaCurso(null, "Informática"));
 			
 			System.out.println("*** Vincular Categoria ao curso ***");
-			Curso curso = cursoRepository.obterTodos().get(0);
+			Curso curso = cursoRepository.findAll().get(0);
 			curso.setCategoriaCurso(categ);
-			cursoRepository.salvar(curso);
+			cursoRepository.save(curso);
+
+			System.out.println("*** OBTER CURSO POR NOME");
+			List<Curso> cursos = cursoRepository.findByNome("teste2");
+			cursos.forEach(System.out::println);
 
 			System.out.println("*** Vincular Pessoa ao Curso");
 			Pessoa pessoa1 = pessoaRepository.salvar(new Pessoa(null, "Bigeus"));
 			Pessoa pessoa2 = pessoaRepository.salvar(new Pessoa(null, "Bigeus222"));
 			curso.matricular(pessoa1);
 			curso.matricular(pessoa2);
-			cursoRepository.salvar(curso); //enviar pro banco
+			cursoRepository.save(curso); //enviar pro banco
 		};
 	}
 

@@ -43,4 +43,11 @@ public class CategoriaCurso {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return "CategoriaCurso [id=" + id + ", nome=" + nome + ", cursos=" + cursos + ", getId()=" + getId()
+                + ", getNome()=" + getNome() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+                + ", toString()=" + super.toString() + "]";
+    }
+
 }
