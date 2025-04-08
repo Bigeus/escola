@@ -1,32 +1,30 @@
-package com.example.escola.models;
+package com.example.escola.domains;
+
 
 import java.util.List;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
-public class Pessoa {
+public class CategoriaCurso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
     private String nome;
-
-    @ManyToMany(mappedBy = "pessoas")
+    
+    @OneToMany(mappedBy = "categoriaCurso")
     private List<Curso> cursos;
 
-    public Pessoa(Integer id, String nome) {
+    public CategoriaCurso(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Pessoa() {
+    public CategoriaCurso() {
     }
 
     public Integer getId() {
@@ -45,12 +43,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public List<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
+    @Override
+    public String toString() {
+        return "CategoriaCurso [id=" + id + ", nome=" + nome + ", cursos=" + cursos + ", getId()=" + getId()
+                + ", getNome()=" + getNome() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+                + ", toString()=" + super.toString() + "]";
     }
 
 }

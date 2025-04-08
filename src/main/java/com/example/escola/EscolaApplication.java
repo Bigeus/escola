@@ -8,9 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.escola.models.CategoriaCurso;
-import com.example.escola.models.Curso;
-import com.example.escola.models.Pessoa;
+import com.example.escola.domains.CategoriaCurso;
+import com.example.escola.domains.Curso;
+import com.example.escola.domains.Pessoa;
 import com.example.escola.repositories.CategoriaCursoRepository;
 import com.example.escola.repositories.CursoRepository;
 import com.example.escola.repositories.PessoaRepository;

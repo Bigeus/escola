@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.escola.models.Pessoa;
+import com.example.escola.domains.Pessoa;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
