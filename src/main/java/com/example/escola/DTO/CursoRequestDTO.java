@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class CursoRequestDTO {
     private String nome;
     private Integer cargaHoraria;
-    private Integer categoriaCursoId;
+    private Long categoriaCursoId;
 }
