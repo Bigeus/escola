@@ -2,15 +2,12 @@ package com.example.escola.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.escola.DTO.CursoDTO;
 import com.example.escola.DTO.CursoRequestDTO;
 import com.example.escola.DTO.DadosCursoDTO;
-import com.example.escola.domains.Curso;
-import com.example.escola.repositories.CursoRepository;
 import com.example.escola.services.CursoService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
