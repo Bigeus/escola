@@ -12,4 +12,8 @@ public class ApiErrorDTO {
     public ApiErrorDTO(String mensagem){
         this.erros = Arrays.asList(mensagem);
     }
+
+    public ApiErrorDTO(List<String> erros){
+        this.erros = erros;
+    }
 }

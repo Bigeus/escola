@@ -79,16 +79,15 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-public void editar(Long id, DadosCursoDTO dto) {
-Curso curso = cursoRepository.findById(id)
-.orElseThrow(() -> new RegraNegocioException("Código do usuário não encontrado."));
-CategoriaCurso categoriaCurso =
-categoriaCursoRepository.findById(dto.getCategoria().getId())
-.orElseThrow(() -> new RegraNegocioException("Categoria não encontrada."));
-curso.setNome(dto.getNome());
-curso.setCargaHoraria(dto.getCargaHoraria());
-curso.setCategoriaCurso(categoriaCurso);
-cursoRepository.save(curso);
-}
+    public void editar(Long id, DadosCursoDTO dto) {
+        Curso curso = cursoRepository.findById(id)
+                .orElseThrow(() -> new RegraNegocioException("Código do usuário não encontrado."));
+        CategoriaCurso categoriaCurso = categoriaCursoRepository.findById(dto.getCategoria().getId())
+                .orElseThrow(() -> new RegraNegocioException("Categoria não encontrada."));
+        curso.setNome(dto.getNome());
+        curso.setCargaHoraria(dto.getCargaHoraria());
+        curso.setCategoriaCurso(categoriaCurso);
+        cursoRepository.save(curso);
+    }
 
 }

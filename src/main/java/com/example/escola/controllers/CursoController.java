@@ -10,6 +10,8 @@ import com.example.escola.DTO.CursoRequestDTO;
 import com.example.escola.DTO.DadosCursoDTO;
 import com.example.escola.services.CursoService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +46,7 @@ public class CursoController {
     }
 
     @PostMapping()
-    public CursoDTO postMethodName(@RequestBody CursoRequestDTO curso) {
+    public CursoDTO postCurso(@Valid @RequestBody CursoRequestDTO curso) {
         return cursoService.salvar(curso);
     }
 
